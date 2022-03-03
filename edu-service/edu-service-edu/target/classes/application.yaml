@@ -1,0 +1,33 @@
+# 服务端口
+server:
+  port: 8001
+
+spring:
+  # 服务名称
+  application:
+    name: edu-service-edu
+  # 环境设置 : dev test prod
+  profiles:
+    active: dev
+  # 数据库连接
+  datasource:
+    username: root
+    password: 1234
+    url: jdbc:mysql://localhost:3306/edu?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  jackson:
+    # 返回 json 的全局时间格式, 默认情况下 json 时间格式带有时区, 并且是世界标准时间, 和我们的时间差了8个小时
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+mybatis-plus:
+  # mybatis-plus 日志
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    # 逻辑删除值
+    db-config:
+      logic-delete-field: 1 # 1 删除
+      logic-not-delete-value: 0 # 0 未删除
+
