@@ -9,7 +9,7 @@ import java.util.Map;
 
 /**
  * @author CodingLife
- * @Description TODD
+ * @Description 统一返回结果 封装类
  * @since 2022/3/4 10:03
  */
 @Data
@@ -40,7 +40,7 @@ public class CommonResult {
     /**
      * data 对象使用 put(K key, V val) 方法的 key
      */
-    private static final String KEY = "items";
+    //private static final String KEY = "items";
 
     private  CommonResult() {}
 
@@ -60,19 +60,24 @@ public class CommonResult {
         return cr;
     }
 
+    /**
+     *
+     * @param key 返回数据 key 值
+     * @param value 返回数据 value 值
+     * @return
+     */
+    public  CommonResult data(String key, Object value) {
+        this.data.put(key, value);
+        return this;
+    }
 
     /**
      *
-     * @param data 返回数据
+     * @param map 返回数据
      * @return
      */
-    public  CommonResult data(Object data) {
-        // 如果返回数据是 Map 类型
-        if (data instanceof Map<?,?>) {
-            this.setData((Map<String, Object>) data);
-        } else { // 否则将数据存储在当前 data 对象
-            this.data.put(this.KEY, data);
-        }
+    public CommonResult data(Map<String, Object> map) {
+        this.setData(map);
         return this;
     }
 

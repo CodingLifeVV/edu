@@ -1,6 +1,7 @@
 package com.codinglife.controller;
 
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.codinglife.CommonResult;
 import com.codinglife.entity.Teacher;
 import com.codinglife.service.TeacherService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -25,6 +27,11 @@ import java.util.List;
 @RequestMapping("/teacher")
 public class TeacherController {
 
+    /**
+     * 返回数据如果为 List 列表类型, 将数据存储在 key 值为 Map 的集合
+     */
+    private static String LIST_KEY = "items";
+
     @Autowired
     private TeacherService teacherService;
 
@@ -36,7 +43,29 @@ public class TeacherController {
     @ApiOperation(value = "所有讲师列表")
     public CommonResult list(){
         List<Teacher> list = teacherService.list(null);
-        return CommonResult.success().data(list);
+        return CommonResult.success().data(this.LIST_KEY, list);
+    }
+
+    /**
+     * 分页查询
+     * @return
+     */
+    @ApiOperation(value = "分页查询教师数据")
+    @ResponseBody
+    @GetMapping("listpage/{current}/{limit}")
+    public CommonResult listByPage(@PathVariable Long current,
+                                   @PathVariable Long limit) {
+        // current-当前页 limit-每页显示条数
+        Page<Teacher> pageTeacher = new Page<Teacher>(current, limit);
+        teacherService.page(pageTeacher);
+        Long total = pageTeacher.getTotal();
+        List<Teacher> records = pageTeacher.getRecords();//获取分页后的list集合
+
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("total", total);
+        map.put("rows", records);
+
+        return CommonResult.success().data(map);
     }
 
     /**
@@ -56,5 +85,7 @@ public class TeacherController {
         }
 
     }
+
+
 }
 
