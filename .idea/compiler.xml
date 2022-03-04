@@ -9,12 +9,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="edu-common-base" />
         <module name="edu-service-edu" />
+        <module name="edu-common-utils" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="edu" target="17" />
       <module name="edu-common" target="17" />
       <module name="edu-common-base" target="17" />
+      <module name="edu-common-utils" target="17" />
       <module name="edu-service" target="17" />
       <module name="edu-service-edu" target="17" />
     </bytecodeTargetLevel>
@@ -24,6 +26,7 @@
       <module name="edu" options="-parameters" />
       <module name="edu-common" options="-parameters" />
       <module name="edu-common-base" options="-parameters" />
+      <module name="edu-common-utils" options="-parameters" />
       <module name="edu-service" options="-parameters" />
       <module name="edu-service-edu" options="-parameters" />
     </option>

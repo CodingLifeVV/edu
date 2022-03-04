@@ -62,7 +62,7 @@ public class Teacher implements Serializable {
     private Boolean deleted;
 
     @ApiModelProperty("创建时间")
-    @TableField(value = "gmt_create", fill = FieldFill.INSERT)
+    @TableField(value = "gmt_create", fill = FieldFill.INSERT) // value 数据库字段值
     private LocalDateTime gmtCreate;
 
     @ApiModelProperty("更新时间")

@@ -19,9 +19,9 @@ import springfox.documentation.spring.web.plugins.Docket;
 @Configuration
 public class SwaggerConfig {
 
-    public static final String VERSION = "1.0.0";
-    public static final String TITLE = "在线教育网API文档";
-    public static final String DESCRIPTION = "课程中心服务接口相关定义";
+    public final String VERSION = "1.0.0";
+    public final String TITLE = "在线教育网API文档";
+    public final String DESCRIPTION = "课程中心服务接口相关定义";
 
     @Bean
     public Docket productApi() {

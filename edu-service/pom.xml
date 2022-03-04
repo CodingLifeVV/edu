@@ -33,9 +33,15 @@
         </dependency>
         -->
 
+        <!--依赖模块-->
         <dependency>
             <groupId>com.codinglife</groupId>
             <artifactId>edu-common-base</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codinglife</groupId>
+            <artifactId>edu-common-utils</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 

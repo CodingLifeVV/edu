@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/edu.iml" filepath="$PROJECT_DIR$/edu.iml" />
       <module fileurl="file://$PROJECT_DIR$/edu-common/edu-common.iml" filepath="$PROJECT_DIR$/edu-common/edu-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/edu-common/edu-common-base/edu-common-base.iml" filepath="$PROJECT_DIR$/edu-common/edu-common-base/edu-common-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/edu-common/edu-common-utils/edu-common-utils.iml" filepath="$PROJECT_DIR$/edu-common/edu-common-utils/edu-common-utils.iml" />
       <module fileurl="file://$PROJECT_DIR$/edu-service/edu-service.iml" filepath="$PROJECT_DIR$/edu-service/edu-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/edu-service/edu-service-edu/edu-service-edu.iml" filepath="$PROJECT_DIR$/edu-service/edu-service-edu/edu-service-edu.iml" />
     </modules>
