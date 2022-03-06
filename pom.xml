@@ -34,7 +34,7 @@
         <swagger-ui.version>1.9.6</swagger-ui.version>
         <fastjson.version>1.2.75</fastjson.version>
         <json.version>20210307</json.version>
-
+        <spring-boot-starter-validation.version>2.6.3</spring-boot-starter-validation.version>
     </properties>
 
     <dependencyManagement>
@@ -96,6 +96,12 @@
                 <groupId>org.json</groupId>
                 <artifactId>json</artifactId>
                 <version>${json.version}</version>
+            </dependency>
+            <!--参数校验-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-validation</artifactId>
+                <version>${spring-boot-starter-validation.version}</version>
             </dependency>
 
         </dependencies>

@@ -19,9 +19,15 @@ import springfox.documentation.spring.web.plugins.Docket;
 @Configuration
 public class SwaggerConfig {
 
-    public final String VERSION = "1.0.0";
-    public final String TITLE = "在线教育网API文档";
-    public final String DESCRIPTION = "课程中心服务接口相关定义";
+    /**
+     * Swagger 配置信息
+     */
+    public static final String VERSION = "1.0.0";
+    public static final String TITLE = "在线教育网API文档";
+    public static final String DESCRIPTION = "课程中心服务接口相关定义";
+    public static final String NAME = "CodingLifeV";
+    public static final String URL = "https://www.bmrs.top";
+    public static final String EMAIL = "wyj_program@163.com";
 
     @Bean
     public Docket productApi() {
@@ -34,14 +40,11 @@ public class SwaggerConfig {
     }
 
     private ApiInfo apiInfo() {
-        // contact 联系人信息
-        Contact contact = new Contact("CodingLifeV", "http://www.bmrs.top", "wyj_program@163.com");
-
         return new ApiInfoBuilder()
                 .title(this.TITLE)
                 .description(this.DESCRIPTION)
                 .version(this.VERSION)
-                .contact(contact)
+                .contact(new Contact(this.NAME, this.URL, this.EMAIL))  // 联系人信息
                 .build();
     }
 

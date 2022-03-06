@@ -11,6 +11,11 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.validation.annotation.Validated;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 /**
  * <p>
@@ -40,6 +45,7 @@ public class Teacher implements Serializable {
     @TableField("intro")
     private String intro;
 
+    @NotEmpty(message = "讲师资历不能为空")
     @ApiModelProperty("讲师资历,一句话说明讲师")
     @TableField("career")
     private String career;

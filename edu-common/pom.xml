@@ -23,6 +23,11 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
         <!--mybatis-plus 持久层-->
         <!--provided意味着打包的时候可以不用包进去, 别的设施会提供, 事实上该依赖理论上可以参与编译-->
         <dependency>

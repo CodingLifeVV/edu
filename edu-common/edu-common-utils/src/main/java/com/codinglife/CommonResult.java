@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -37,31 +38,63 @@ public class CommonResult {
     @ApiModelProperty(value = "返回数据")
     private Map<String, Object> data = new HashMap<String, Object>();
 
-    /**
-     * data 对象使用 put(K key, V val) 方法的 key
-     */
-    //private static final String KEY = "items";
-
     private  CommonResult() {}
 
+    /**
+     * 成功返回结果
+     * @return
+     */
     public static CommonResult success() {
-        CommonResult cr = new CommonResult();
-        cr.setSuccess(ResultCode.SUCCESS.isSuccess());
-        cr.setCode(ResultCode.SUCCESS.getCode());
-        cr.setMessage(ResultCode.SUCCESS.getMessage());
-        return cr;
-    }
-
-    public static CommonResult error() {
-        CommonResult cr = new CommonResult();
-        cr.setSuccess(ResultCode.ERROR.isSuccess());
-        cr.setCode(ResultCode.ERROR.getCode());
-        cr.setMessage(ResultCode.ERROR.getMessage());
-        return cr;
+        return CommonResult.setCommonResult(ResultCode.SUCCESS);
     }
 
     /**
-     *
+     * 失败返回结果
+     * @return
+     */
+    public static CommonResult error() {
+        return CommonResult.setCommonResult(ResultCode.ERROR);
+    }
+
+    /**
+     * 参数验证失败返回结果
+     * @return
+     */
+    public static CommonResult validateFailed() {
+        return CommonResult.setCommonResult(ResultCode.VALIDATE_FAILED);
+    }
+
+    /**
+     * 统一设置返回结果
+     * @param resultCode
+     * @return
+     */
+    public static CommonResult setCommonResult(ResultCode resultCode) {
+        CommonResult commonResult = new CommonResult();
+        commonResult.setSuccess(resultCode.isSuccess());
+        commonResult.setCode(resultCode.getCode());
+        commonResult.setMessage(resultCode.getMessage());
+        return commonResult;
+    }
+
+    /**
+     * 统一设置返回结果, 修改提示信息 message
+     * @param resultCode
+     * @param message
+     * @return
+     */
+    public static CommonResult setCommonResult(ResultCode resultCode, String message) {
+        CommonResult commonResult = new CommonResult();
+        commonResult.setSuccess(resultCode.isSuccess());
+        commonResult.setCode(resultCode.getCode());
+        commonResult.setMessage(message);
+        return commonResult;
+    }
+
+
+
+    /**
+     * 返回数据处理
      * @param key 返回数据 key 值
      * @param value 返回数据 value 值
      * @return
@@ -72,7 +105,7 @@ public class CommonResult {
     }
 
     /**
-     *
+     * 返回数据处理
      * @param map 返回数据
      * @return
      */
@@ -80,5 +113,4 @@ public class CommonResult {
         this.setData(map);
         return this;
     }
-
 }

@@ -18,7 +18,9 @@ public enum ResultCode {
     UNAUTHORIZED(false,401, "暂未登录或token已经过期"),
     FORBIDDEN(false,403, "没有相关权限");
 
-    private boolean success;
-    private long code;
-    private String message;
+    private boolean success; // 是否成功
+    private long code;       // 状态码
+    private String message;  // 提示消息
+
+
 }

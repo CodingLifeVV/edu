@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 
@@ -24,6 +25,7 @@ import java.util.List;
  * @since 2022-03-03
  */
 @Controller
+@ResponseBody
 @RequestMapping("/teacher")
 public class TeacherController {
 
@@ -39,10 +41,16 @@ public class TeacherController {
      * @return CommonResult 统一返回结果
      */
     @GetMapping("listAll")
-    @ResponseBody
     @ApiOperation(value = "所有讲师列表")
     public CommonResult list(){
         List<Teacher> list = teacherService.list(null);
+
+        try {
+            int i = 10 / 0;
+        } catch (Exception e) {
+            throw new ArithmeticException();
+        }
+
         return CommonResult.success().data(this.LIST_KEY, list);
     }
 
@@ -51,7 +59,6 @@ public class TeacherController {
      * @return
      */
     @ApiOperation(value = "分页查询教师数据")
-    @ResponseBody
     @GetMapping("listpage/{current}/{limit}")
     public CommonResult listByPage(@PathVariable Long current,
                                    @PathVariable Long limit) {
@@ -69,12 +76,49 @@ public class TeacherController {
     }
 
     /**
+     *
+     * @param teacher
+     * @return
+     * @RequestBody 将请求参数绑定到 request body 中, 封装为具体的 JavaBean
+     */
+    @ApiOperation("添加教师")
+    @PostMapping("addTeacher")
+    public CommonResult addTeacher(@Valid @RequestBody Teacher teacher) {
+    boolean result = teacherService.save(teacher);
+    if (result) {
+        return CommonResult.success();
+    } else
+        return CommonResult.error();
+    }
+
+    /**
+     *
+     * @param id 教师ID
+     * @return
+     */
+    @ApiOperation("根据ID查询教师")
+    @GetMapping("getTeacher/{id}")
+    public CommonResult getTeacherById(@PathVariable String id) {
+        Teacher teacher = teacherService.getById(id);
+        return CommonResult.success().data("teacher", teacher);
+    }
+
+    @ApiOperation("修改教师信息")
+    @PostMapping("updateTeacher")
+    public CommonResult updateTeacher(@RequestBody Teacher teacher) {
+        boolean result = teacherService.updateById(teacher);
+        if (result) {
+            return CommonResult.success();
+        } else
+            return CommonResult.error();
+    }
+
+    /**
      * @param id
      * @return
      * @ApiParam name-参数名称 value-参数简单描述 required-是否为必传参数
      */
     @DeleteMapping("delete/{id}")
-    @ResponseBody
     @ApiOperation("通过id删除讲师")
     public CommonResult deleteTeacherById(@ApiParam(name = "id", value = "讲师id", required = true) @PathVariable String id) {
         boolean result =  teacherService.removeById(id);
@@ -83,9 +127,6 @@ public class TeacherController {
         } else {
             return CommonResult.error();
         }
-
     }
-
-
 }
 
