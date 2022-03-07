@@ -45,11 +45,11 @@ public class TeacherController {
     public CommonResult list(){
         List<Teacher> list = teacherService.list(null);
 
-        try {
+        /*try {
             int i = 10 / 0;
         } catch (Exception e) {
             throw new ArithmeticException();
-        }
+        }*/
 
         return CommonResult.success().data(this.LIST_KEY, list);
     }
