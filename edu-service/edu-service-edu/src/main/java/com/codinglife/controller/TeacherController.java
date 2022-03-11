@@ -24,9 +24,9 @@ import java.util.List;
  * @author CodingLife
  * @since 2022-03-03
  */
-@Controller
-@ResponseBody
+@RestController
 @RequestMapping("/teacher")
+@CrossOrigin // 解决跨域问题
 public class TeacherController {
 
     /**
