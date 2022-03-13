@@ -22,10 +22,12 @@ public class AutoFillConfig implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
         log.info("start insert fill ....");
-        // 插入时自动填充属性 createTime
+        // 插入时自动填充属性 gmtCreate 创建时间
         this.strictInsertFill(metaObject, "gmtCreate", LocalDateTime.class, LocalDateTime.now());
+        // 插入时自动填充属性 gmtModified 更新时间
+        this.strictInsertFill(metaObject, "gmtModified", LocalDateTime.class, LocalDateTime.now());
         // 插入时自动填充属性 deleted
-        this.strictInsertFill(metaObject, "deleted", Integer.class, 0);
+        this.strictInsertFill(metaObject, "deleted", Boolean.class, false);
 
     }
 

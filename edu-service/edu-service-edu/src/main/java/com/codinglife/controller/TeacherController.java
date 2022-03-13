@@ -1,16 +1,19 @@
 package com.codinglife.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.codinglife.CommonResult;
 import com.codinglife.entity.Teacher;
+import com.codinglife.entity.vo.TeachQuery;
 import com.codinglife.service.TeacherService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
-import org.springframework.stereotype.Controller;
 
 import javax.validation.Valid;
 import java.util.HashMap;
@@ -76,6 +79,55 @@ public class TeacherController {
     }
 
     /**
+     * 条件查询分页方法
+     * @param current 当前显示页
+     * @param limit   每页显示记录数
+     * @param teachQuery 条件查询封装类
+     * @return
+     */
+    @ApiOperation(value = "条件查询分页方法")
+    @PostMapping("listByPageCondition/{current}/{limit}")
+    public CommonResult listByPageCondition(@PathVariable Long current,
+                                   @PathVariable Long limit,
+                                   @RequestBody TeachQuery teachQuery) {
+        // 创建 page
+        Page<Teacher> pageCondition = new Page<>(current, limit);
+
+        // 构建 QueryWrapper
+        QueryWrapper<Teacher> wrapper = new QueryWrapper<>();
+        //多条件组合查询，动态sql
+        String name = teachQuery.getName();
+        Integer level = teachQuery.getLevel();
+        String begin = teachQuery.getBegin();
+        String end = teachQuery.getEnd();
+
+        //判断条件是否为空，拼接条件
+        if (!ObjectUtils.isEmpty(level)) {
+            wrapper.eq("level", level);
+        }
+        if (!ObjectUtils.isEmpty(name)) {
+            wrapper.like("name", name);
+        }
+        if (!ObjectUtils.isEmpty(begin)) {
+            wrapper.ge("gmt_create", begin);
+        }
+        if (!ObjectUtils.isEmpty(end)) {
+            wrapper.le("gmt_create", end);
+        }
+
+        wrapper.orderByDesc("gmt_create");
+        //调用方法，实现分页查询
+        teacherService.page(pageCondition, wrapper);
+        long total = pageCondition.getTotal(); //获取总记录数
+        List<Teacher> records = pageCondition.getRecords(); // 获取分页后的 list 集合
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("total", total);
+        map.put("rows", records);
+
+        return CommonResult.success().data(map);
+    }
+
+    /**
      *
      * @param teacher
      * @return
@@ -111,6 +163,18 @@ public class TeacherController {
             return CommonResult.success();
         } else
             return CommonResult.error();
+    }
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    @ApiOperation("根据教师Id查询教师信息")
+    @GetMapping("updateTeacher/{id}")
+    public CommonResult getTeacher(@PathVariable String id) {
+        Teacher teacher = teacherService.getById(id);
+        return CommonResult.success().data("teacher", teacher);
     }
 
     /**
