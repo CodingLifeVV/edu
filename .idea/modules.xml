@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/edu-common/edu-common-utils/edu-common-utils.iml" filepath="$PROJECT_DIR$/edu-common/edu-common-utils/edu-common-utils.iml" />
       <module fileurl="file://$PROJECT_DIR$/edu-service/edu-service.iml" filepath="$PROJECT_DIR$/edu-service/edu-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/edu-service/edu-service-edu/edu-service-edu.iml" filepath="$PROJECT_DIR$/edu-service/edu-service-edu/edu-service-edu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/edu-service/edu-service-oss/edu-service-oss.iml" filepath="$PROJECT_DIR$/edu-service/edu-service-oss/edu-service-oss.iml" />
     </modules>
   </component>
 </project>
