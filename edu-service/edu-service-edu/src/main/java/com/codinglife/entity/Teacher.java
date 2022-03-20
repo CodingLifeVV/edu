@@ -24,33 +24,33 @@ import javax.validation.constraints.NotEmpty;
 @Getter
 @Setter
 @TableName("edu_teacher")
-@ApiModel(value = "Teacher对象", description = "讲师")
+@ApiModel(value = "Teacher对象", description = "教师")
 public class Teacher implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty("讲师ID")
+    @ApiModelProperty("教师ID")
     @TableId("id")
     private String id;
 
-    @ApiModelProperty("讲师姓名")
+    @ApiModelProperty("教师姓名")
     @TableField("name")
     private String name;
 
-    @ApiModelProperty("讲师简介")
+    @ApiModelProperty("教师简介")
     @TableField("intro")
     private String intro;
 
-    @NotEmpty(message = "讲师资历不能为空")
-    @ApiModelProperty("讲师资历,一句话说明讲师")
+    @NotEmpty(message = "教师资历不能为空")
+    @ApiModelProperty("教师资历,一句话说明讲师")
     @TableField("career")
     private String career;
 
-    @ApiModelProperty("头衔 1高级讲师 2首席讲师")
+    @ApiModelProperty("教师头衔 1教授 2副教授 3讲师 4助教")
     @TableField("level")
     private Integer level;
 
-    @ApiModelProperty("讲师头像")
+    @ApiModelProperty("教师头像")
     @TableField("avatar")
     private String avatar;
 

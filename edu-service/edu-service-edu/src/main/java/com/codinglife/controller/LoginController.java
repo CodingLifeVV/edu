@@ -2,9 +2,7 @@ package com.codinglife.controller;
 
 import com.codinglife.CommonResult;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 /**

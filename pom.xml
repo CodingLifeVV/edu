@@ -40,6 +40,7 @@
         <slf4j-api.version>1.7.32</slf4j-api.version>
         <aliyun-oss.version>3.14.0</aliyun-oss.version>
         <joda-time.version>2.10.13</joda-time.version>
+        <easyexcel.version>3.0.5</easyexcel.version>
     </properties>
 
     <dependencyManagement>
@@ -145,6 +146,14 @@
                 <artifactId>joda-time</artifactId>
                 <version>${joda-time.version}</version>
             </dependency>
+
+            <!-- easyexcel 导入excel数据 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>easyexcel</artifactId>
+                <version>${easyexcel.version}</version>
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>
