@@ -9,6 +9,8 @@ import com.codinglife.exception.CustomizeApiException;
 import com.codinglife.service.CourseSubjectService;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,6 +29,7 @@ public class CourseSubjectExcelListener extends AnalysisEventListener<CourseSubj
 
     public CourseSubjectExcelListener() {
     }
+
 
     @Override
     public void invoke(CourseSubjectExcelData courseSubjectExcelData, AnalysisContext analysisContext) {
@@ -60,7 +63,6 @@ public class CourseSubjectExcelListener extends AnalysisEventListener<CourseSubj
             courseSubjectService.save(twoLevelSubject);
         }
     }
-
     /**
      * 判断课程一级分类是否重复, 名称存在且父ID=0则重复
      * @param courseSubjectService
@@ -71,7 +73,7 @@ public class CourseSubjectExcelListener extends AnalysisEventListener<CourseSubj
         QueryWrapper<CourseSubject> wrapper = new QueryWrapper<>();
         wrapper.eq("title", courseSubjectName);
         wrapper.eq("parent_id", "0");
-        return courseSubjectService.getOne(wrapper);
+        return courseSubjectService.getOne(wrapper)  ;
     }
 
     /**

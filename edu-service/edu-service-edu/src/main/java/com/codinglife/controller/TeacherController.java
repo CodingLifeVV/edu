@@ -11,7 +11,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -62,7 +61,7 @@ public class TeacherController {
      * @return
      */
     @ApiOperation(value = "分页查询教师数据")
-    @GetMapping("listpage/{current}/{limit}")
+        @GetMapping("listpage/{current}/{limit}")
     public CommonResult listByPage(@PathVariable Long current,
                                    @PathVariable Long limit) {
         // current-当前页 limit-每页显示条数
@@ -184,7 +183,7 @@ public class TeacherController {
      */
     @DeleteMapping("delete/{id}")
     @ApiOperation("通过id删除讲师")
-    public CommonResult deleteTeacherById(@ApiParam(name = "id", value = "讲师id", required = true) @PathVariable String id) {
+    public CommonResult deleteTeacherById(@ApiParam(name = "id", value = "教师id", required = true) @PathVariable String id) {
         boolean result =  teacherService.removeById(id);
         if (result) {
             return CommonResult.success();
