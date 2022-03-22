@@ -4,8 +4,8 @@ package com.codinglife.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.codinglife.CommonResult;
-import com.codinglife.entity.Teacher;
-import com.codinglife.entity.vo.TeachQuery;
+import com.codinglife.entity.TeacherDo;
+import com.codinglife.entity.vo.TeachQueryVo;
 import com.codinglife.service.TeacherService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -45,7 +45,7 @@ public class TeacherController {
     @GetMapping("listAll")
     @ApiOperation(value = "所有讲师列表")
     public CommonResult list(){
-        List<Teacher> list = teacherService.list(null);
+        List<TeacherDo> list = teacherService.list(null);
 
         /*try {
             int i = 10 / 0;
@@ -65,10 +65,10 @@ public class TeacherController {
     public CommonResult listByPage(@PathVariable Long current,
                                    @PathVariable Long limit) {
         // current-当前页 limit-每页显示条数
-        Page<Teacher> pageTeacher = new Page<Teacher>(current, limit);
+        Page<TeacherDo> pageTeacher = new Page<TeacherDo>(current, limit);
         teacherService.page(pageTeacher);
         Long total = pageTeacher.getTotal();
-        List<Teacher> records = pageTeacher.getRecords();//获取分页后的list集合
+        List<TeacherDo> records = pageTeacher.getRecords();//获取分页后的list集合
 
         HashMap<String, Object> map = new HashMap<>();
         map.put("total", total);
@@ -88,12 +88,12 @@ public class TeacherController {
     @PostMapping("listByPageCondition/{current}/{limit}")
     public CommonResult listByPageCondition(@PathVariable Long current,
                                    @PathVariable Long limit,
-                                   @RequestBody TeachQuery teachQuery) {
+                                   @RequestBody TeachQueryVo teachQuery) {
         // 创建 page
-        Page<Teacher> pageCondition = new Page<>(current, limit);
+        Page<TeacherDo> pageCondition = new Page<>(current, limit);
 
         // 构建 QueryWrapper
-        QueryWrapper<Teacher> wrapper = new QueryWrapper<>();
+        QueryWrapper<TeacherDo> wrapper = new QueryWrapper<>();
         //多条件组合查询，动态sql
         String name = teachQuery.getName();
         Integer level = teachQuery.getLevel();
@@ -118,7 +118,7 @@ public class TeacherController {
         //调用方法，实现分页查询
         teacherService.page(pageCondition, wrapper);
         long total = pageCondition.getTotal(); //获取总记录数
-        List<Teacher> records = pageCondition.getRecords(); // 获取分页后的 list 集合
+        List<TeacherDo> records = pageCondition.getRecords(); // 获取分页后的 list 集合
         HashMap<String, Object> map = new HashMap<>();
         map.put("total", total);
         map.put("rows", records);
@@ -134,7 +134,7 @@ public class TeacherController {
      */
     @ApiOperation("添加教师")
     @PostMapping("addTeacher")
-    public CommonResult addTeacher(@Valid @RequestBody Teacher teacher) {
+    public CommonResult addTeacher(@Valid @RequestBody TeacherDo teacher) {
     boolean result = teacherService.save(teacher);
     if (result) {
         return CommonResult.success();
@@ -150,13 +150,13 @@ public class TeacherController {
     @ApiOperation("根据ID查询教师")
     @GetMapping("getTeacher/{id}")
     public CommonResult getTeacherById(@PathVariable String id) {
-        Teacher teacher = teacherService.getById(id);
+        TeacherDo teacher = teacherService.getById(id);
         return CommonResult.success().data("teacher", teacher);
     }
 
     @ApiOperation("修改教师信息")
     @PostMapping("updateTeacher")
-    public CommonResult updateTeacher(@RequestBody Teacher teacher) {
+    public CommonResult updateTeacher(@RequestBody TeacherDo teacher) {
         boolean result = teacherService.updateById(teacher);
         if (result) {
             return CommonResult.success();
@@ -172,7 +172,7 @@ public class TeacherController {
     @ApiOperation("根据教师Id查询教师信息")
     @GetMapping("updateTeacher/{id}")
     public CommonResult getTeacher(@PathVariable String id) {
-        Teacher teacher = teacherService.getById(id);
+        TeacherDo teacher = teacherService.getById(id);
         return CommonResult.success().data("teacher", teacher);
     }
 

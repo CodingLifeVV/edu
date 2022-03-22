@@ -1,6 +1,6 @@
 package com.codinglife.mapper;
 
-import com.codinglife.entity.Teacher;
+import com.codinglife.entity.TeacherDo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author CodingLife
  * @since 2022-03-03
  */
-public interface TeacherMapper extends BaseMapper<Teacher> {
+public interface TeacherMapper extends BaseMapper<TeacherDo> {
 
 }

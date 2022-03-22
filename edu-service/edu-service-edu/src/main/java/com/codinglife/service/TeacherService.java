@@ -1,6 +1,6 @@
 package com.codinglife.service;
 
-import com.codinglife.entity.Teacher;
+import com.codinglife.entity.TeacherDo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author CodingLife
  * @since 2022-03-03
  */
-public interface TeacherService extends IService<Teacher> {
+public interface TeacherService extends IService<TeacherDo> {
 
 }

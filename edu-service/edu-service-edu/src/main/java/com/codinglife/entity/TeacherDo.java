@@ -25,7 +25,7 @@ import javax.validation.constraints.NotEmpty;
 @Setter
 @TableName("edu_teacher")
 @ApiModel(value = "Teacher对象", description = "教师")
-public class Teacher implements Serializable {
+public class TeacherDo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

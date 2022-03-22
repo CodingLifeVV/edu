@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @Data
 @Api("课程类别")
 @TableName("edu_subject")
-public class CourseSubject implements Serializable {
+public class CourseSubjectDo implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "课程类别ID")

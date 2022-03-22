@@ -3,7 +3,7 @@ package com.codinglife.service.impl;
 import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.codinglife.entity.CourseSubject;
+import com.codinglife.entity.CourseSubjectDo;
 import com.codinglife.entity.excel.CourseSubjectExcelData;
 import com.codinglife.entity.subject.OneLevelCourseSubject;
 import com.codinglife.entity.subject.TwoLevelCourseSubject;
@@ -25,7 +25,7 @@ import java.util.List;
  * @since 2022/3/18 11:18
  */
 @Service
-public class CourseSubjectServiceImpl extends ServiceImpl<CourseSubjectMapper, CourseSubject> implements CourseSubjectService {
+public class CourseSubjectServiceImpl extends ServiceImpl<CourseSubjectMapper, CourseSubjectDo> implements CourseSubjectService {
     /**
      * 批量导入课程分类文件
      * @param file 课程分类excel文件
@@ -49,21 +49,21 @@ public class CourseSubjectServiceImpl extends ServiceImpl<CourseSubjectMapper, C
     @Override
     public List<OneLevelCourseSubject> getAlltNestedCourseSubject() {
         // 1.查询出所有一级分类 parent_id=0
-        QueryWrapper<CourseSubject> wrapper = new QueryWrapper<>();
+        QueryWrapper<CourseSubjectDo> wrapper = new QueryWrapper<>();
         wrapper.eq("parent_id", "0");
-        List<CourseSubject> oneLevelCourseSubjectList = baseMapper.selectList(wrapper);
+        List<CourseSubjectDo> oneLevelCourseSubjectList = baseMapper.selectList(wrapper);
 
 
 
         // 2.查询出所有二级分类 parent_id!=0
-        QueryWrapper<CourseSubject> wrapper2 = new QueryWrapper<>();
+        QueryWrapper<CourseSubjectDo> wrapper2 = new QueryWrapper<>();
         wrapper2.ne("parent_id", "0");
-        List<CourseSubject> twoLevelCourseSubjectList = baseMapper.selectList(wrapper2);
+        List<CourseSubjectDo> twoLevelCourseSubjectList = baseMapper.selectList(wrapper2);
 
         // 3.封装一级分类
         List<OneLevelCourseSubject> finnalList = new ArrayList<>();
         for (int i = 0; i < oneLevelCourseSubjectList.size(); i++) {
-            CourseSubject courseSubject = oneLevelCourseSubjectList.get(i);
+            CourseSubjectDo courseSubject = oneLevelCourseSubjectList.get(i);
 
             // 一级课程分类
             OneLevelCourseSubject oneLevelCourseSubject = new OneLevelCourseSubject();
@@ -74,7 +74,7 @@ public class CourseSubjectServiceImpl extends ServiceImpl<CourseSubjectMapper, C
             // 4.封装二级课程分类,创建list集合封装每一个一级课程分类的二级课程分类
             List<TwoLevelCourseSubject> twoFinnalList = new ArrayList<>();
             for (int j = 0; j < twoLevelCourseSubjectList.size(); j++) {
-                CourseSubject courseSubject2 = twoLevelCourseSubjectList.get(j);
+                CourseSubjectDo courseSubject2 = twoLevelCourseSubjectList.get(j);
                 // 如过一级课程分类的 id 等于二级课程分类的 parent_id,进行封装
                 if (courseSubject.getId().equals(courseSubject2.getParentId())) {
                     TwoLevelCourseSubject twoLevelCourseSubject = new TwoLevelCourseSubject();

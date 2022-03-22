@@ -3,14 +3,12 @@ package com.codinglife.listener;
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.codinglife.entity.CourseSubject;
+import com.codinglife.entity.CourseSubjectDo;
 import com.codinglife.entity.excel.CourseSubjectExcelData;
 import com.codinglife.exception.CustomizeApiException;
 import com.codinglife.service.CourseSubjectService;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -37,12 +35,12 @@ public class CourseSubjectExcelListener extends AnalysisEventListener<CourseSubj
             throw new CustomizeApiException(20001, "文件数据为空");
         }
         // 添加一级分类
-        CourseSubject oneLevelSubject =
+        CourseSubjectDo oneLevelSubject =
                 this.existOneLevelSubject(courseSubjectService, courseSubjectExcelData.getOneLevelSubjectName());
 
         // 不存在该数据, 添加
         if (oneLevelSubject == null) {
-            oneLevelSubject = new CourseSubject();
+            oneLevelSubject = new CourseSubjectDo();
             oneLevelSubject.setTitle(courseSubjectExcelData.getOneLevelSubjectName());
             oneLevelSubject.setParentId("0");
             courseSubjectService.save(oneLevelSubject);
@@ -51,13 +49,13 @@ public class CourseSubjectExcelListener extends AnalysisEventListener<CourseSubj
         //获取一级分类id值
         String oneLevelSubjectId = oneLevelSubject.getId();
         // 添加二级分类
-        CourseSubject twoLevelSubject =
+        CourseSubjectDo twoLevelSubject =
                 this.existTwoLevelSubject(
                         courseSubjectService,
                         courseSubjectExcelData.getTwoLevelSubjectName(),
                         oneLevelSubjectId);
         if(twoLevelSubject == null) {
-            twoLevelSubject = new CourseSubject();
+            twoLevelSubject = new CourseSubjectDo();
             twoLevelSubject.setTitle(courseSubjectExcelData.getTwoLevelSubjectName());
             twoLevelSubject.setParentId(oneLevelSubjectId);
             courseSubjectService.save(twoLevelSubject);
@@ -69,8 +67,8 @@ public class CourseSubjectExcelListener extends AnalysisEventListener<CourseSubj
      * @param courseSubjectName 课程类别名称
      * @return
      */
-    private CourseSubject existOneLevelSubject(CourseSubjectService courseSubjectService, String courseSubjectName) {
-        QueryWrapper<CourseSubject> wrapper = new QueryWrapper<>();
+    private CourseSubjectDo existOneLevelSubject(CourseSubjectService courseSubjectService, String courseSubjectName) {
+        QueryWrapper<CourseSubjectDo> wrapper = new QueryWrapper<>();
         wrapper.eq("title", courseSubjectName);
         wrapper.eq("parent_id", "0");
         return courseSubjectService.getOne(wrapper)  ;
@@ -82,8 +80,8 @@ public class CourseSubjectExcelListener extends AnalysisEventListener<CourseSubj
      * @param courseSubjectName 课程类别名称
      * @return
      */
-    private CourseSubject existTwoLevelSubject(CourseSubjectService courseSubjectService, String courseSubjectName, String oneLevelSubjectId) {
-        QueryWrapper<CourseSubject> wrapper = new QueryWrapper<>();
+    private CourseSubjectDo existTwoLevelSubject(CourseSubjectService courseSubjectService, String courseSubjectName, String oneLevelSubjectId) {
+        QueryWrapper<CourseSubjectDo> wrapper = new QueryWrapper<>();
         wrapper.eq("title", courseSubjectName);
         wrapper.eq("parent_id", oneLevelSubjectId);
         return courseSubjectService.getOne(wrapper);

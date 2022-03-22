@@ -9,7 +9,7 @@ import lombok.Data;
  * @since 2022/3/12 10:09
  */
 @Data
-public class TeachQuery {
+public class TeachQueryVo {
 
     private static final long serialVersionUID = 1L;
 
