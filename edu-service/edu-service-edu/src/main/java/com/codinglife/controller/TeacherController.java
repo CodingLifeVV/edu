@@ -31,10 +31,6 @@ import java.util.List;
 @CrossOrigin // 解决跨域问题
 public class TeacherController {
 
-    /**
-     * 返回数据如果为 List 列表类型, 将数据存储在 key 值为 Map 的集合
-     */
-    private static String LIST_KEY = "items";
 
     @Autowired
     private TeacherService teacherService;
@@ -53,7 +49,7 @@ public class TeacherController {
             throw new ArithmeticException();
         }*/
 
-        return CommonResult.success().data(this.LIST_KEY, list);
+        return CommonResult.success().data("teacherList", list);
     }
 
     /**

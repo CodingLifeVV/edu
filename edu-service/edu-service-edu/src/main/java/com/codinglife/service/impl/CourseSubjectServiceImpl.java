@@ -75,7 +75,7 @@ public class CourseSubjectServiceImpl extends ServiceImpl<CourseSubjectMapper, C
             List<TwoLevelCourseSubject> twoFinnalList = new ArrayList<>();
             for (int j = 0; j < twoLevelCourseSubjectList.size(); j++) {
                 CourseSubjectDo courseSubject2 = twoLevelCourseSubjectList.get(j);
-                // 如过一级课程分类的 id 等于二级课程分类的 parent_id,进行封装
+                // 如果一级课程分类的 id 等于二级课程分类的 parent_id,进行封装
                 if (courseSubject.getId().equals(courseSubject2.getParentId())) {
                     TwoLevelCourseSubject twoLevelCourseSubject = new TwoLevelCourseSubject();
                     BeanUtils.copyProperties(courseSubject2, twoLevelCourseSubject);

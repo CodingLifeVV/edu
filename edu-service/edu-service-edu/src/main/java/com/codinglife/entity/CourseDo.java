@@ -25,11 +25,11 @@ public class CourseDo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     /**
-     * 课程状态 COURSE_DRAFT未发布  Normal已发布
+     * 课程状态 COURSE_DRAFT 未发布  Normal 已发布
      */
     public static final String COURSE_DRAFT = "Draft";
     /**
-     * 课程状态 COURSE_NORMAL已发布
+     * 课程状态 COURSE_NORMAL 已发布
      */
     public static final String COURSE_NORMAL = "Normal";
 
@@ -81,10 +81,10 @@ public class CourseDo implements Serializable {
     @TableField("status")
     private String status;
 
-    @ApiModelProperty("逻辑删除 1(true)已删除， 0(false)未删除")
-    @TableField("is_deleted")
+    @ApiModelProperty("逻辑删除 1（true）已删除， 0（false）未删除")
+    @TableField(value = "is_deleted", fill = FieldFill.INSERT)
     @TableLogic
-    private Integer isDeleted;
+    private Boolean deleted;
 
     @ApiModelProperty("创建时间")
     @TableField(value = "gmt_create", fill = FieldFill.INSERT)
@@ -93,6 +93,4 @@ public class CourseDo implements Serializable {
     @ApiModelProperty("更新时间")
     @TableField(value = "gmt_modified", fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime gmtModified;
-
-
 }

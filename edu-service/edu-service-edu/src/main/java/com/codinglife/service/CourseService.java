@@ -14,4 +14,10 @@ import com.codinglife.entity.vo.CourseInfoVo;
  */
 public interface CourseService extends IService<CourseDo> {
     String saveCourseInfo(CourseInfoVo courseInfoVo);
+
+    CourseInfoVo getCourseInfoById(String courseId);
+
+    void updateCourseInfo(CourseInfoVo courseInfoVo);
+
+    void removeCourse(String courseId);
 }
