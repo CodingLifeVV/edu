@@ -81,7 +81,7 @@ public class CourseDo implements Serializable {
     @TableField("status")
     private String status;
 
-    @ApiModelProperty("逻辑删除 1（true）已删除， 0（false）未删除")
+    @ApiModelProperty("逻辑删除 1(true)已删除， 0(false)未删除")
     @TableField(value = "is_deleted", fill = FieldFill.INSERT)
     @TableLogic
     private Boolean deleted;

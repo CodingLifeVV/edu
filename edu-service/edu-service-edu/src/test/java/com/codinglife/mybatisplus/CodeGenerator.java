@@ -81,7 +81,7 @@ public class CodeGenerator {
     private StrategyConfig.Builder strategyConfig() {
         StrategyConfig.Builder strategyConfigBuilder = new StrategyConfig.Builder();
         strategyConfigBuilder
-                .addInclude("edu_course_description")       // 设置需要生成的表名
+                .addInclude("edu_video")       // 设置需要生成的表名
                 .addTablePrefix("edu_", "is_")   // 增加过滤表前缀
                 .enableCapitalMode();            // 开启大写命名
         // 实体策略配置
