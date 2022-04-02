@@ -3,10 +3,13 @@ package com.codinglife.controller;
 
 import com.codinglife.CommonResult;
 import com.codinglife.entity.ChapterDo;
+import com.codinglife.entity.vo.ChapterVo;
 import com.codinglife.service.ChapterService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -23,6 +26,17 @@ import org.springframework.web.bind.annotation.*;
 public class ChapterController {
     @Autowired
     private ChapterService chapterService;
+
+    /**
+     * 获取课程基本信息
+     * @param courseId
+     * @return
+     */
+    @GetMapping("getChapterVideo/{courseId}")
+    public CommonResult getChapterVo(@PathVariable String courseId) {
+        List<ChapterVo> list = chapterService.getChapterVoByCourseId(courseId);
+        return CommonResult.success().data("allChapterVideo", list);
+    }
 
     /**
      * 添加课程章节
@@ -47,7 +61,7 @@ public class ChapterController {
     }
 
     /**
-     * 修改课程章节
+     * 根据章节id修改课程章节
      * @param chapter
      * @return
      */
@@ -58,11 +72,11 @@ public class ChapterController {
     }
 
     /**
-     * 删除课程章节
+     * 根据id删除课程章节
      * @param chapterId
      * @return
      */
-    @DeleteMapping("{chapterId}")
+    @DeleteMapping("deleteChapter/{chapterId}")
     public CommonResult deleteChapter(@PathVariable String chapterId) {
         boolean result = chapterService.deleteChapterByCharpterId(chapterId);
         if (result) {

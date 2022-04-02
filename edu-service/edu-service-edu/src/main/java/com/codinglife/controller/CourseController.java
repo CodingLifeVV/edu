@@ -25,6 +25,11 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
+    /**
+     * 添加课程信息
+     * @param courseInfoVo
+     * @return
+     */
     @ApiOperation("添加课程信息")
     @PostMapping("addCourseInfo")
     public CommonResult addCourseInfo(@RequestBody CourseInfoVo courseInfoVo) {
@@ -32,14 +37,22 @@ public class CourseController {
         return CommonResult.success().data("courseId", id);
     }
 
-    //根据课程id查询课程基本信息
+    /**
+     * 根据课程id查询课程基本信息
+     * @param courseId
+     * @return
+     */
     @GetMapping("getCourseInfo/{courseId}")
     public CommonResult getCourseInfo(@PathVariable String courseId) {
         CourseInfoVo courseInfoVo = courseService.getCourseInfoById(courseId);
         return CommonResult.success().data("courseInfo", courseInfoVo);
     }
 
-    //修改课程信息
+    /**
+     * 修改课程信息
+     * @param courseInfoVo
+     * @return
+     */
     @PostMapping("updateCourseInfo")
     public CommonResult updateCourseInfo(@RequestBody CourseInfoVo courseInfoVo) {
         courseService.updateCourseInfo(courseInfoVo);

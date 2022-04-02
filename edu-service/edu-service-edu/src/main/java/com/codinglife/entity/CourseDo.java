@@ -41,10 +41,11 @@ public class CourseDo implements Serializable {
     @TableField("teacher_id")
     private String teacherId;
 
-    @ApiModelProperty("课程专业ID")
+    @ApiModelProperty("课程类别ID")
     @TableField("subject_id")
     private String subjectId;
 
+    @ApiModelProperty("课程类别父ID")
     @TableField("subject_parent_id")
     private String subjectParentId;
 

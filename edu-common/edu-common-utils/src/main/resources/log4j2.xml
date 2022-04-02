@@ -12,7 +12,7 @@
         <!-- %logger{36} 表示 Logger 名字最长 36 个字符 -->
         <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n" />
         <!-- 定义日志存储的路径, 不要配置相对路径 -->
-        <property name="LOG_FILE_PATH" value="E:\logs\log4j2" />
+        <property name="LOG_FILE_PATH" value="/Applications/workspace/edu-log"/>
         <property name="LOG_FILE_NAME" value="edulog4j2" />
     </Properties>
 

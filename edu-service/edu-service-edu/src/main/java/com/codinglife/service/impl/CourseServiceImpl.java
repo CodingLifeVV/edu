@@ -30,8 +30,6 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, CourseDo> imple
     @Autowired
     CourseDescriptionService courseDescriptionService;
 
-
-
     /**
      * 添加课程信息
      * @param courseInfoVo
@@ -64,11 +62,8 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, CourseDo> imple
      */
     @Override
     public CourseInfoVo getCourseInfoById(String courseId) {
-        //log.info
         //1查询课程表类容
         CourseDo course = baseMapper.selectById(courseId);
-        //CourseDo course2 = baseMapper.selectOne(courseId);
-
         //封装到 CourseInfoVo 中
         CourseInfoVo courseInfoVo = new CourseInfoVo();
         BeanUtils.copyProperties(course, courseInfoVo);
@@ -100,11 +95,13 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, CourseDo> imple
     }
 
     /**
-     * 根据id删除课程
+     * 根据课程id删除课程
      * @param courseId
      */
     @Override
     public void removeCourse(String courseId) {
+        // 根据课程id删除小节内容
 
+        // 根据课程id删除章节
     }
 }
