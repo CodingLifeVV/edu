@@ -2,6 +2,7 @@ package com.codinglife.mapper;
 
 import com.codinglife.entity.CourseDo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.codinglife.entity.vo.CoursePublishVo;
 
 /**
  * <p>
@@ -12,5 +13,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @since 2022-03-22
  */
 public interface CourseMapper extends BaseMapper<CourseDo> {
-
+    CoursePublishVo getPublishCourse(String courseId);
 }

@@ -3,6 +3,7 @@ package com.codinglife.service;
 import com.codinglife.entity.CourseDo;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.codinglife.entity.vo.CourseInfoVo;
+import com.codinglife.entity.vo.CoursePublishVo;
 
 /**
  * <p>
@@ -20,4 +21,6 @@ public interface CourseService extends IService<CourseDo> {
     void updateCourseInfo(CourseInfoVo courseInfoVo);
 
     void removeCourse(String courseId);
+
+    CoursePublishVo getPublishCourseInfo(String courseId);
 }

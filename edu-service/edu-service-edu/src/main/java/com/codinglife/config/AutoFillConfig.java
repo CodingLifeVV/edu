@@ -37,6 +37,6 @@ public class AutoFillConfig implements MetaObjectHandler {
         // 更新时自动填充属性 gmtModified
         this.strictUpdateFill(metaObject, "gmtModified", LocalDateTime.class, LocalDateTime.now());
         // 更新时自动填充属性 version
-        //this.strictUpdateFill(metaObject, "version", Integer.class, 1);
+        this.strictUpdateFill(metaObject, "version", Integer.class, 1);
     }
 }

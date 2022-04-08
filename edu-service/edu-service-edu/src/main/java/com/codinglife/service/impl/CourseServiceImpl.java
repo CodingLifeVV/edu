@@ -3,12 +3,15 @@ package com.codinglife.service.impl;
 import com.codinglife.entity.CourseDescriptionDo;
 import com.codinglife.entity.CourseDo;
 import com.codinglife.entity.vo.CourseInfoVo;
+import com.codinglife.entity.vo.CoursePublishVo;
 import com.codinglife.exception.CustomizeApiException;
 import com.codinglife.exception.GlobalExceptionHandler;
 import com.codinglife.mapper.CourseMapper;
+import com.codinglife.service.ChapterService;
 import com.codinglife.service.CourseDescriptionService;
 import com.codinglife.service.CourseService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.codinglife.service.VideoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,12 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, CourseDo> imple
 
     @Autowired
     CourseDescriptionService courseDescriptionService;
+
+    @Autowired
+    VideoService videoService;
+
+    @Autowired
+    ChapterService chapterService;
 
     /**
      * 添加课程信息
@@ -100,8 +109,29 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, CourseDo> imple
      */
     @Override
     public void removeCourse(String courseId) {
-        // 根据课程id删除小节内容
 
-        // 根据课程id删除章节
+        //根据课程id删除小节和视频
+        videoService.removeByCourseId(courseId);
+        //根据课程id删除章节
+        chapterService.deleteChapterByCharpterId(courseId);
+        //根据课程id删除课程描述
+        courseDescriptionService.removeById(courseId);
+        //根据课程id删除课程本身
+        int i = baseMapper.deleteById(courseId);
+        if (i == 0) {
+            throw new CustomizeApiException(20001, "删除失败");
+        }
+    }
+
+    /**
+     * 根据课程id查询待发布课程信息
+     * @param courseId
+     * @return
+     */
+    @Override
+    public CoursePublishVo getPublishCourseInfo(String courseId) {
+        //调用mapper
+        CoursePublishVo coursePublishVo = baseMapper.getPublishCourse(courseId);
+        return coursePublishVo;
     }
 }
