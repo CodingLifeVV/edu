@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="aliyun-java-vod-upload-1.4.14">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/aliyun-java-vod-upload-1.4.14.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
