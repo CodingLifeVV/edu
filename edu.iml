@@ -16,5 +16,14 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar:///Applications/software/apache-maven-3.8.5/repository/com/aliyun/aliyun-java-vod-upload/1.4.14/aliyun-java-vod-upload-1.4.14.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

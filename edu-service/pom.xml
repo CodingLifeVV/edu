@@ -14,6 +14,7 @@
     <modules>
         <module>edu-service-edu</module>
         <module>edu-service-oss</module>
+        <module>edu-service-vod</module>
     </modules>
 
     <properties>
@@ -146,6 +147,8 @@
             <artifactId>core</artifactId>
             <version>9.5.2</version>
         </dependency>
+
+
     </dependencies>
 
 
