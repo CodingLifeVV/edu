@@ -8,10 +8,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="edu-common-base" />
-        <module name="edu-service-vod" />
         <module name="edu-service-edu" />
         <module name="edu-common-utils" />
         <module name="edu-service-oss" />
+      </profile>
+      <profile name="Annotation profile for edu" enabled="true">
+        <sourceOutputDir name="../../target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../../target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="edu-service-vod" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
