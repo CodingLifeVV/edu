@@ -2,10 +2,12 @@ package com.codinglife.controller;
 
 
 import com.codinglife.CommonResult;
+import com.codinglife.client.VodClient;
 import com.codinglife.entity.TeacherDo;
 import com.codinglife.entity.VideoDo;
 import com.codinglife.service.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +28,9 @@ public class VideoController {
 
     @Autowired
     private VideoService videoService;
+
+    @Autowired
+    private VodClient vodClient;
 
     /**
      * 添加小节内容
@@ -50,9 +55,9 @@ public class VideoController {
         VideoDo video = videoService.getById(id);
         String videoSourceId = video.getVideoSourceId();
         //判断是否有视频,有就删除
-        if (!StringUtils.isEmpty(videoSourceId)) {
+        if (!ObjectUtils.isEmpty(videoSourceId)) {
             //远程调用vod删除视频
-            // ... 未完成
+            vodClient.removeVideo(videoSourceId);
         }
         //删除小节
         videoService.removeById(id);

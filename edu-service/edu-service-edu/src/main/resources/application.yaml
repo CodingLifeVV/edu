@@ -20,6 +20,20 @@ spring:
     # 返回 json 的全局时间格式, 默认情况下 json 时间格式带有时区, 并且是世界标准时间, 和我们的时间差了8个小时
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+  cloud:
+    # nacos 服务地址，服务注册
+    nacos:
+      discovery:
+        server-addr:127.0.0.1:8848
+    # Sentinel 控制台地址(如果安装在了本地电脑，地址为localhost:8080)
+    sentinel:
+      transport:
+        dashboard: 101.43.164.126:8080
+      # eager: true
+# Feign 适配 Sentinel 组件
+feign:
+  sentinel:
+    enabled: true
 
 mybatis-plus:
   # mybatis-plus 日志
@@ -32,3 +46,4 @@ mybatis-plus:
       logic-not-delete-value: 0 # 0 未删除
   # 如果 Mapper 文件中写了查询方法, 需要确保mapper文件被读取到
   mapper-locations: com/**/*.xml
+

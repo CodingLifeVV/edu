@@ -13,9 +13,9 @@ import com.codinglife.service.VodService;
 import com.codinglife.utils.AliyunVodConfigConstant;
 import com.codinglife.utils.AliyunVodSDKUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.InputStream;
@@ -101,6 +101,26 @@ public class VodServiceImpl implements VodService {
      */
     @Override
     public void removeAllVideo(List videoIdList) {
+        try {
+            //初始化对象
+            DefaultAcsClient client = AliyunVodSDKUtils.initVodClient(
+                    AliyunVodConfigConstant.ACCESS_KEY_ID,
+                    AliyunVodConfigConstant.ACCESS_KEY_SECRET);
+            //创建删除视频的request对象
+            DeleteVideoRequest request = new DeleteVideoRequest();
 
+            //遍历数组元素 a[1,2,3,4] 变为 1,2,3,4
+            String join = StringUtils.join(videoIdList.toArray(), ",");
+
+            //向request中设置videoId
+            request.setVideoIds(join);
+            //调用删除方法
+            DeleteVideoResponse response = client.getAcsResponse(request);
+
+            System.out.print("RequestId = " + response.getRequestId() + "\n");
+
+        } catch (ClientException e) {
+            throw new CustomizeApiException(20001, "视频删除失败");
+        }
     }
 }

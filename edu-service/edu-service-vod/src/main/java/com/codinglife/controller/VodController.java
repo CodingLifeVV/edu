@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 /**
  * @Description: 阿里云视频点播controller接口
  * @author: CodingLifeVV
@@ -28,7 +30,7 @@ public class VodController {
     }
 
     /**
-     * 删除云端视频
+     * 删除单个云端视频
      * @param videoId
      * @return
      */
@@ -37,5 +39,16 @@ public class VodController {
                          @PathVariable String videoId) {
         vodService.removeVideo(videoId);
         return CommonResult.setCommonResult(ResultCode.SUCCESS, "视频删除成果");
+    }
+
+    /**
+     * 删除多个云端视频
+     * @param videoIdList
+     * @return
+     */
+    @DeleteMapping("deleteBatch")
+    public CommonResult removeVideoBatch(@RequestParam List videoIdList) {
+        vodService.removeAllVideo(videoIdList);
+        return CommonResult.success();
     }
 }
