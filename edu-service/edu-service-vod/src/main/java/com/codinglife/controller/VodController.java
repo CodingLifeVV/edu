@@ -23,12 +23,6 @@ public class VodController {
     @Autowired
     private VodService vodService;
 
-    @PostMapping("uploadVideo")
-    public CommonResult uploadVideo(MultipartFile file) {
-        String videoId = vodService.uploadVideo(file);
-        return CommonResult.success().data("videoId", videoId);
-    }
-
     /**
      * 删除单个云端视频
      * @param videoId
@@ -36,10 +30,18 @@ public class VodController {
      */
     @DeleteMapping("deleteVideoSource/{videoId}")
     public CommonResult removeVideo(@ApiParam(name = "videoId", value = "云端视频id", required = true)
-                         @PathVariable String videoId) {
+                                    @PathVariable String videoId) {
         vodService.removeVideo(videoId);
         return CommonResult.setCommonResult(ResultCode.SUCCESS, "视频删除成果");
     }
+
+    @PostMapping("uploadVideo")
+    public CommonResult uploadVideo(MultipartFile file) {
+        String videoId = vodService.uploadVideo(file);
+        return CommonResult.success().data("videoId", videoId);
+    }
+
+
 
     /**
      * 删除多个云端视频

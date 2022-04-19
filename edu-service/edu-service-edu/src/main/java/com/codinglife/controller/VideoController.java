@@ -33,17 +33,6 @@ public class VideoController {
     private VodClient vodClient;
 
     /**
-     * 添加小节内容
-     * @param video
-     * @return
-     */
-    @PostMapping("addVideo")
-    public CommonResult addVideo(@RequestBody VideoDo video) {
-        videoService.save(video);
-        return CommonResult.success();
-    }
-
-    /**
      * 删除小节,同时删除小节内的视频
      * @param id
      * @return
@@ -63,6 +52,19 @@ public class VideoController {
         videoService.removeById(id);
         return CommonResult.success();
     }
+
+
+    /**
+     * 添加小节内容
+     * @param video
+     * @return
+     */
+    @PostMapping("addVideo")
+    public CommonResult addVideo(@RequestBody VideoDo video) {
+        videoService.save(video);
+        return CommonResult.success();
+    }
+
 
     /**
      * 根据id查询小节信息

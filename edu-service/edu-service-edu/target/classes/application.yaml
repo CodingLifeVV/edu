@@ -25,13 +25,15 @@ spring:
     nacos:
       discovery:
         server-addr:127.0.0.1:8848
-    # Sentinel 控制台地址
+    # Sentinel 控制台地址(如果安装在了本地电脑，地址为localhost:8080)
     sentinel:
       transport:
         dashboard: 101.43.164.126:8080
-
-
       # eager: true
+# Feign 适配 Sentinel 组件
+feign:
+  sentinel:
+    enabled: true
 
 mybatis-plus:
   # mybatis-plus 日志
