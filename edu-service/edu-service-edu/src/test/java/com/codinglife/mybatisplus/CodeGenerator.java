@@ -42,7 +42,7 @@ public class CodeGenerator {
             .Builder(
                     "jdbc:mysql://localhost:3306/edu?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8",
                     "root",
-                    "1234"
+                    "12345678"
             )
             .build();
 
@@ -59,11 +59,12 @@ public class CodeGenerator {
     private GlobalConfig.Builder globalConfig() {
         return new GlobalConfig.Builder()
                 .fileOverride()                 //覆盖已生成文件
-                .outputDir("D:\\Program Files\\workspace\\idea2\\edu\\edu-service\\edu-service-edu" + "/src/main/java") //指定输出目录
+                .outputDir("/Users/wyj/Desktop/edu-all/edu/edu-service/edu-service-cms" + "/src/main/java") //指定输出目录
                 .author("CodingLife")           //作者名
                 .enableSwagger()                //开启 Swagger 模式
                 .dateType(DateType.TIME_PACK)   //时间策略
                 .commentDate("yyyy-MM-dd");     //注释日期
+        ///Users/wyj/Desktop/edu-all/edu/edu-service/edu-service-cms
     }
 
     /**
@@ -81,7 +82,7 @@ public class CodeGenerator {
     private StrategyConfig.Builder strategyConfig() {
         StrategyConfig.Builder strategyConfigBuilder = new StrategyConfig.Builder();
         strategyConfigBuilder
-                .addInclude("edu_video")       // 设置需要生成的表名
+                .addInclude("crm_banner")       // 设置需要生成的表名
                 .addTablePrefix("edu_", "is_")   // 增加过滤表前缀
                 .enableCapitalMode();            // 开启大写命名
         // 实体策略配置

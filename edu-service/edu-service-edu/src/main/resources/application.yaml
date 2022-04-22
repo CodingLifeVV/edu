@@ -46,4 +46,3 @@ mybatis-plus:
       logic-not-delete-value: 0 # 0 未删除
   # 如果 Mapper 文件中写了查询方法, 需要确保mapper文件被读取到
   mapper-locations: com/**/*.xml
-
