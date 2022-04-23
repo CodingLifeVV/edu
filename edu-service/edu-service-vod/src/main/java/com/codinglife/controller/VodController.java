@@ -41,8 +41,6 @@ public class VodController {
         return CommonResult.success().data("videoId", videoId);
     }
 
-
-
     /**
      * 删除多个云端视频
      * @param videoIdList

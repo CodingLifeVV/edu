@@ -2,6 +2,7 @@ package com.codinglife.service;
 
 import com.codinglife.entity.CrmBanner;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.boot.Banner;
 
 import java.util.List;
 
@@ -15,4 +16,10 @@ import java.util.List;
  */
 public interface CrmBannerService extends IService<CrmBanner> {
     List<CrmBanner> getAllBanner();
+
+    void savaBanner(CrmBanner crmBanner);
+
+    void updateBannerById(CrmBanner crmBanner);
+
+    void removeBannerById(String id);
 }
