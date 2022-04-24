@@ -51,6 +51,8 @@
         <spring-cloud-dependencies.version>2021.0.1</spring-cloud-dependencies.version>
         <spring-cloud-alibaba-dependencies.version>2021.0.1.0</spring-cloud-alibaba-dependencies.version>
 
+        <jjwt.version>0.9.1</jjwt.version>
+
     </properties>
 
     <dependencyManagement>
@@ -198,6 +200,13 @@
                 <version>${spring-cloud-alibaba-dependencies.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <!-- JWT 跨越身份验证-->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
             </dependency>
 
         </dependencies>
