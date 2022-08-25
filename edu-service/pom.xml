@@ -16,6 +16,8 @@
         <module>edu-service-oss</module>
         <module>edu-service-vod</module>
         <module>edu-service-cms</module>
+        <module>edu-service-msm</module>
+        <module>edu-service-ucenter</module>
     </modules>
 
     <properties>

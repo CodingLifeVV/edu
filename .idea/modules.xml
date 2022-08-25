@@ -9,7 +9,9 @@
       <module fileurl="file://$PROJECT_DIR$/edu-service/edu-service.iml" filepath="$PROJECT_DIR$/edu-service/edu-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/edu-service/edu-service-cms/edu-service-cms.iml" filepath="$PROJECT_DIR$/edu-service/edu-service-cms/edu-service-cms.iml" />
       <module fileurl="file://$PROJECT_DIR$/edu-service/edu-service-edu/edu-service-edu.iml" filepath="$PROJECT_DIR$/edu-service/edu-service-edu/edu-service-edu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/edu-service/edu-service-msm/edu-service-msm.iml" filepath="$PROJECT_DIR$/edu-service/edu-service-msm/edu-service-msm.iml" />
       <module fileurl="file://$PROJECT_DIR$/edu-service/edu-service-oss/edu-service-oss.iml" filepath="$PROJECT_DIR$/edu-service/edu-service-oss/edu-service-oss.iml" />
+      <module fileurl="file://$PROJECT_DIR$/edu-service/edu-service-ucenter/edu-service-ucenter.iml" filepath="$PROJECT_DIR$/edu-service/edu-service-ucenter/edu-service-ucenter.iml" />
       <module fileurl="file://$PROJECT_DIR$/edu-service/edu-service-vod/edu-service-vod.iml" filepath="$PROJECT_DIR$/edu-service/edu-service-vod/edu-service-vod.iml" />
     </modules>
   </component>

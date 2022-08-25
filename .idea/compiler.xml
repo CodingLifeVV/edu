@@ -9,10 +9,12 @@
         <outputRelativeToContentRoot value="true" />
         <module name="edu-common-base" />
         <module name="edu-service-vod" />
+        <module name="edu-service-msm" />
+        <module name="edu-service-cms" />
+        <module name="edu-service-ucenter" />
         <module name="edu-service-edu" />
         <module name="edu-common-utils" />
         <module name="edu-service-oss" />
-        <module name="edu-service-cms" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -23,7 +25,9 @@
       <module name="edu-service" target="17" />
       <module name="edu-service-cms" target="17" />
       <module name="edu-service-edu" target="17" />
+      <module name="edu-service-msm" target="17" />
       <module name="edu-service-oss" target="17" />
+      <module name="edu-service-ucenter" target="17" />
       <module name="edu-service-vod" target="17" />
     </bytecodeTargetLevel>
   </component>
@@ -36,7 +40,9 @@
       <module name="edu-service" options="-parameters" />
       <module name="edu-service-cms" options="-parameters" />
       <module name="edu-service-edu" options="-parameters" />
+      <module name="edu-service-msm" options="-parameters" />
       <module name="edu-service-oss" options="-parameters" />
+      <module name="edu-service-ucenter" options="-parameters" />
       <module name="edu-service-vod" options="-parameters" />
     </option>
   </component>

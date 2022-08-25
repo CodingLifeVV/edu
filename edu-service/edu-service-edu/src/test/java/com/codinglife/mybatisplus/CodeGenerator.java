@@ -59,7 +59,7 @@ public class CodeGenerator {
     private GlobalConfig.Builder globalConfig() {
         return new GlobalConfig.Builder()
                 .fileOverride()                 //覆盖已生成文件
-                .outputDir("/Users/wyj/Desktop/edu-all/edu/edu-service/edu-service-cms" + "/src/main/java") //指定输出目录
+                .outputDir("/Users/wyj/Desktop/edu-all/edu/edu-service/edu-service-ucenter" + "/src/main/java") //指定输出目录
                 .author("CodingLife")           //作者名
                 .enableSwagger()                //开启 Swagger 模式
                 .dateType(DateType.TIME_PACK)   //时间策略
@@ -82,7 +82,7 @@ public class CodeGenerator {
     private StrategyConfig.Builder strategyConfig() {
         StrategyConfig.Builder strategyConfigBuilder = new StrategyConfig.Builder();
         strategyConfigBuilder
-                .addInclude("crm_banner")       // 设置需要生成的表名
+                .addInclude("ucenter_member")       // 设置需要生成的表名
                 .addTablePrefix("edu_", "is_")   // 增加过滤表前缀
                 .enableCapitalMode();            // 开启大写命名
         // 实体策略配置
