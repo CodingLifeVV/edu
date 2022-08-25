@@ -2,7 +2,9 @@
 <p>
     <a href="https://github.com/CodingLifeVV/edu-admin/tree/master"><img src="https://img.shields.io/badge/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE-edu--admin-blue" alt="后端前台项目"></a>
     <a href="https://github.com/CodingLifeVV/edu"><img src="https://img.shields.io/badge/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE-edu-orange" alt="后端项目"></a>
-    <a href="https://github.com/CodingLifeVV/edu-front/tree/master"><img src="https://img.shields.io/badge/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE-edu--admin-blue" alt="前端项目"></a>
+    <a href="https://github.com/CodingLifeVV/edu-front"><img src="https://img.shields.io/badge/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE-edu--admin-blue" alt="前端项目"></a>
+
+    
 </p>
 
 # 项目介绍
