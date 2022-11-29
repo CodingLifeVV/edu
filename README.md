@@ -52,7 +52,7 @@
 
 - 前台项目：<a href="https://github.com/CodingLifeVV/edu-front" target="_blank">https://github.com/CodingLifeVV/edu-front</a>
 
-  ![Nov-04-2022 17-35-35](https://eduimage1.oss-cn-beijing.aliyuncs.com/img/Nov-04-2022%2017-35-35.gif)
+  ![前台项目](https://eduimage1.oss-cn-beijing.aliyuncs.com/img/Nov-04-2022%2017-35-35.gif)
 
 ## 交流学习
 
